@@ -1,11 +1,15 @@
 //import logo from './logo.svg'
 // imporn logo
 import './App.css'
+import './Main.css'
+import './Header.css'
+import './Footer.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Main from '../components/Main'
 import Game from '../components/Game'
 import React, { useState } from 'react';
+import { Route } from 'react-router-dom';
 // import styling
 
 function App() {
@@ -17,13 +21,17 @@ function App() {
     <div className='App'>
       <Header />
       {/* insert component from anither file */}
-      <h1 className="title text-dark">Mathificent</h1>
-      <Main operation={operation}
-        setOperation={setOperation}
-        maxNumber={maxNumber}
-        setMaxNumber={setMaxNumber} />
-      <Game operation={operation}
-        maxNumber={maxNumber} />
+
+      <Route exact path="/"
+        component={() =>
+          <Main operation={operation}
+            setOperation={setOperation}
+            maxNumber={maxNumber}
+            setMaxNumber={setMaxNumber} />} />
+      <Route exact path="/Game"
+        component={() =>
+          <Game operation={operation}
+            maxNumber={maxNumber} />} />
       <Footer />
     </div>
   )
